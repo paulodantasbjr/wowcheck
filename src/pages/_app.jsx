@@ -1,5 +1,6 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+/* eslint-disable react/jsx-props-no-spreading */
+import React from 'react';
+import PropTypes from 'prop-types';
 
 import { ThemeProvider } from 'styled-components';
 
@@ -7,20 +8,19 @@ import theme from '../styles/theme';
 
 import GlobalStyle from '../styles/global';
 
-const App = ({ Component, pageProps }) => {
-  return (
-    <>
-      <GlobalStyle />
-      <ThemeProvider theme={theme}>
-        <Component {...pageProps} />
-      </ThemeProvider>
-    </>
-  )
-}
+const App = ({ Component, pageProps }) => (
+  <>
+    <GlobalStyle />
 
-_app.propTypes = {
+    <ThemeProvider theme={theme}>
+      <Component {...pageProps} />
+    </ThemeProvider>
+  </>
+);
 
-}
+App.propTypes = {
+  Component: PropTypes.func.isRequired,
+  pageProps: PropTypes.func.isRequired,
+};
 
-export default _app
-
+export default App;
